@@ -65,8 +65,11 @@ def date(event)
     else
       event_hash = Hash[d.map.with_index.to_a]
 
-      starting_index = event_hash["2013,"] if event_hash["2013,"].present?
-      starting_index = event_hash["2014,"] if event_hash["2014,"].present?
+      #starting_index = event_hash["2013,"] if event_hash["2013,"].present?
+      #starting_index = event_hash["2014,"] if event_hash["2014,"].present?
+      #starting_index = event_hash["2015,"] if event_hash["2015,"].present?
+      yr = DateTime.now.year
+      5.times.to_a.reverse.each{|y| starting_index = event_hash["#{yr - y},"] if event_hash["#{yr-y},"].present?}
       starting_index = event_hash["am,"] if event_hash["am,"].present?
       starting_index = event_hash["pm,"] if event_hash["pm,"].present?
 
